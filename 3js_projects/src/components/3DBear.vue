@@ -19,13 +19,13 @@ onMounted(() => {
     1000
   )
 
-  camera.position.set(1.5,1,1.5)// 相机位置
+  camera.position.set(1.5, 1, 1.5)// 相机位置
   camera.aspect = window.innerWidth / window.innerHeight// 设置相机视锥体宽高比
   camera.updateProjectionMatrix()// 更新相机投影矩阵
   scene.add(camera)// 将相机添加到场景中
 
   // 3、创建初始化渲染器
-  const renderer = new THREE.WebGL1Renderer({
+  const renderer = new THREE.WebGLRenderer({
     antialias: true// 抗锯齿
   })
 

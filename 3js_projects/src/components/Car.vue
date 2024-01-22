@@ -45,18 +45,18 @@ const carBodyMaterial = new THREE.MeshPhysicalMaterial({
   clearcoatRoughness: 0, //薄膜粗糙度
 })
 // 玻璃材质（该段代码会导致控制台报错，未知原因）
-const carGlassMaterial = new THREE.MeshPhysicalMaterial({
-  color: '0xffffff',
-  metalness: 0.25,
-  roughness: 0,
-  transmission: 1.0, // 透光率
-})
+// const carGlassMaterial = new THREE.MeshPhysicalMaterial({
+//   color: '0xffffff',
+//   metalness: 0.25,
+//   roughness: 0,
+//   transmission: 1.0, // 透光率
+// })
 
-const detailsMaterial = new THREE.MeshPhysicalMaterial({
-  color: '0xffffff',
-  metalness: 1.0,
-  roughness: 0.4,
-})
+// const detailsMaterial = new THREE.MeshPhysicalMaterial({
+//   color: '0xffffff',
+//   metalness: 1.0,
+//   roughness: 0.4,
+// })
 
 // 设置车身颜色
 const setCarColor = (color: string) => {

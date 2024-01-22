@@ -17,13 +17,8 @@
   <div class="choose">
     <div>车身颜色选择：</div>
     <div class="choose-list">
-      <div
-        class="item"
-        v-for="item in colorList"
-        :key="item"
-        :style="{ background: item }"
-        @click="setCarColor(item)"
-      ></div>
+      <div class="item" v-for="item in colorList" :key="item" :style="{ background: item }" @click="setCarColor(item)">
+      </div>
     </div>
   </div>
 </template>
@@ -85,14 +80,14 @@ onMounted(() => {
   scene.add(camera)
 
   // 创建渲染器
-  const renderer = new THREE.WebGL1Renderer({
+  const renderer = new THREE.WebGLRenderer({
     antialias: true, //设置抗锯齿
   })
   //设置渲染器大小
   renderer.setSize(window.innerWidth, window.innerHeight)
   // 设置渲染背景
-  renderer.setClearColor('#000') // 清除原来的黑色
-  scene.background = new THREE.Color('#ccc')
+  renderer.setClearColor('#000'); // 清除原来的黑色
+  scene.background = new THREE.Color('#ccc');
 
   // 将渲染内容添加到dom中
   document.getElementById('container')?.appendChild(renderer.domElement)
@@ -124,7 +119,9 @@ onMounted(() => {
   render()
 
   // 创建并添加网格地面
-  const gridHelper = new THREE.GridHelper(10, 10)
+  const gridHelper = new THREE.GridHelper(10, 10);
+  gridHelper.material.opacity = 0.2;
+  gridHelper.material.transparent = true;
   scene.add(gridHelper)
 
   /************************************car展示的相关逻辑*****************************/
@@ -138,12 +135,12 @@ onMounted(() => {
 
   // 初始化loader(需要先导入gltf 模型加载器、draco模型解码器)、注意填写path的正确路径
   const dracoLoader = new DRACOLoader() // 模型解压器
-  dracoLoader.setDecoderPath('/public/draco/') // 设置路径，最后面的斜杠一定要加上，不让无法正常加载
+  dracoLoader.setDecoderPath('./draco/') // 设置路径，最后面的斜杠一定要加上，不让无法正常加载
   const loaders = new GLTFLoader() // 模型加载器
   loaders.setDRACOLoader(dracoLoader)
 
   // 加载汽车模型
-  loaders.load('/public/model/car.glb', (gltf) => {
+  loaders.load('./model/car.glb', (gltf) => {
     const car = gltf.scene
     car.traverse((child: any) => {
       if (child.isMesh) {
